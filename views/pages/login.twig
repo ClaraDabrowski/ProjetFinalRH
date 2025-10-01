@@ -1,0 +1,32 @@
+{% extends "/layouts/baseAuth.twig" %}
+
+{% block style %}
+	<link rel="stylesheet" href="/assets/css/login.css">
+{% endblock %}
+
+{% block main %}
+	<section>
+		<h2>Connexion</h2>
+		<div>
+			<div class="errorss">
+				{% if error.siret %}
+					<p>{{error.siret}}</p>
+				{% endif %}
+				{% if error.password %}
+					<p>{{error.password}}</p>
+				{% endif %}
+			</div>
+			<form action="/login" method="POST">
+				<div>
+					<label for="siret"></label>
+					<input type="text" name="siret" id="siret" placeholder="Votre SIRET..">
+				</div>
+				<div>
+					<label for="password"></label>
+					<input type="password" name="password" id="password" placeholder="Votre mot de passe..">
+				</div>
+				<button>Envoyer</button>
+			</form>
+		</div>
+	</section>
+{% endblock %}

@@ -1,0 +1,46 @@
+{% extends "/layouts/baseAuth.twig" %}
+
+{% block style %}
+	<link rel="stylesheet" href="/assets/css/register.css">
+{% endblock %}
+
+{% block main %}
+	<section>
+		<h2>Inscription</h2>
+		<div>
+
+			<form action="/register" method="post">
+				<div>
+					<label for="raisonSocial"></label>
+					<input type="text" id="raisonSocial" name="raisonSocial" placeholder="{% if errors is defined and errors.raisonSocial %}{{ errors.raisonSocial }}{% else %}Raison sociale..{% endif %}">
+				</div>
+				<div>
+					<label for="siret"></label>
+					<input type="text" id="siret" name="siret" placeholder="{% if errors is defined and errors.siret %}{{ errors.siret }}{% else %}SIRET..{% endif %}">
+				</div>
+				{% if duplicateSiret %}
+					<p>{{duplicateSiret}}</p>
+				{% endif %}
+				<div>
+					<label for="lastName"></label>
+					<input type="text" id="lastName" name="lastName" placeholder="{% if errors is defined and errors.lastName %}{{ errors.lastName }}{% else %}Nom..{% endif %}">
+				</div>
+				{% if not user %}
+					<div>
+						<label for="password"></label>
+						<input type="password" id="password" name="password" placeholder="{% if errors is defined and errors.password %}{{ errors.password }}{% else %}Mot de passe..{% endif %}">
+					</div>
+					<div>
+						<label for="confirm"></label>
+						<input type="password" id="confirm" name="confirm" placeholder="{% if errors is defined and errors.confirm %}{{ errors.confirm }}{% else %}Confirmer le mot de passe..{% endif %}">
+					</div>
+					{% if confirmError %}
+						<p>{{confirmError}}</p>
+					{% endif %}
+				{% endif %}
+
+				<button>Envoyer</button>
+			</form>
+		</div>
+	</section>
+{% endblock %}

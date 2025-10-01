@@ -1,0 +1,21 @@
+{
+  "name": "projetfinalrh",
+  "version": "1.0.0",
+  "description": "Projet final BigBoss ",
+  "main": "server.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "ClaraDbwk",
+  "license": "ISC",
+  "dependencies": {
+    "@prisma/client": "^6.16.2",
+    "bcrypt": "^6.0.0",
+    "express": "^5.1.0",
+    "express-session": "^1.18.2",
+    "twig": "^1.17.1"
+  },
+  "prisma": {
+    "schema": "./prisma"
+  }
+}
