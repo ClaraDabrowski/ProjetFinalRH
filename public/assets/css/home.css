@@ -8,14 +8,17 @@ body{
 .infoPres{
     h2{
         font-size: 60px;
-        color: gray
+        color: gray;
+        padding-top: 5px
     };
     width: 1500px;
     display: flex;
     flex-direction: row;
     justify-content: space-between;
     align-items: center;
+    align-content: center;
     padding-left: 40px;
+    
 }
 
 
@@ -104,3 +107,26 @@ body{
     color: grey;
     text-align: center;
 }
+
+
+    .searchInput input {
+        width: 400px;
+        padding: 15px;
+        margin-left: 300px;
+        margin-top: 5px;
+        border-radius: 20px;
+        border: none;
+        text-align: center;
+        font-size: 15px;background-color: #b3b3b3;
+        color: rgb(0, 0, 0);
+    }
+
+    .searchInput{
+        display: flex;
+        align-items: center;
+        align-content: center;
+        
+       
+    }
+
+    

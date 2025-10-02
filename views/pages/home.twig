@@ -5,7 +5,9 @@
 		<div class="infoPres">
 			<h2>Bienvenue
 				{{company.raisonSocial}}</h2>
-			<h3>{{company.lastName}}</h3>
+			<div class="searchInput">
+                <input type="zoneSaisie" type="text" placeholder="Rechercher un employé.." id="searchBar">
+            </div>
             
 		</div>
 		<div class="empCount">
@@ -16,7 +18,7 @@
 		<div class="employeesSection">
 			{% for employee in company.employees %}
 				<article class="employeeCard">
-					<p class="nameBox">{{employee.lastName ~ " " ~  employee.firstName}}</p>
+					<p class="nameCard">{{employee.lastName ~ " " ~  employee.firstName}}</p>
 					<p>{{employee.mail}}</p>
 					<div class="buttonsCard">
 						<a href="/updateemployee/{{employee.id}}">Modifier</a>

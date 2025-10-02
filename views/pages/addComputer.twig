@@ -1,0 +1,17 @@
+{% extends "/layouts/base.twig" %}
+
+{% block style %}
+	<link rel="stylesheet" href="/assets/css/addComputer.css">
+{% endblock %}
+
+{% block main %}
+		<h2>Ajout d'ordinateur :</h2>
+		<form action="/addComputer" method="post">
+			<div>
+				<label for="mac"></label>
+				<input type="text" id="mac" placeholder="Adresse MAC.." name="mac" value={{computer.mac}}>
+			</div>
+			<button>Envoyer</button>
+		</form>
+	</div>
+{% endblock %}

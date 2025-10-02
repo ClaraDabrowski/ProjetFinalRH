@@ -1,0 +1,28 @@
+{% extends "/layouts/base.twig" %}
+
+
+{% block style %}
+	<link rel="stylesheet" href="/assets/css/employees.css">
+{% endblock %}
+
+{% block main %}
+	
+		<h2 class="emp">Employés</h2>
+		<div class="cardEmp">
+			{% for employee in company.employees %}
+				<article class="employeesCards">
+					<p class="nameCard">{{employee.lastName ~ " " ~  employee.firstName}}</p>
+					<p>{{employee.mail}}</p>
+					<p>{{employee.age}}
+						ans</p>
+					<p>{{employee.gender}}</p>
+					<p>{{company.raisonSocial}}</p>
+					<div class="buttonsCard">
+						<a href="/updateemployee/{{employee.id}}">Modifier</a>
+						<a href="/removeemployee/{{employee.id}}">Supprimer</a>
+					</div>
+				</article>
+			{% endfor %}
+		</div>
+	
+{% endblock %}

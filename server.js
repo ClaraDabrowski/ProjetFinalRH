@@ -1,6 +1,7 @@
 const express = require('express');
 const userRouter = require('./routers/userRouter')
 const employeeRouter = require('./routers/employeeRouter')  
+const computerRouter = require('./routers/computerRouter')
 const session = require ('express-session')
 
 
@@ -20,7 +21,7 @@ app.use(session({
 
 app.use(userRouter)
 app.use(employeeRouter)
-
+app.use(computerRouter)
 
 app.listen(3001, (err)=>{
     console.log(!err ? "Connecté au serveur" : err);

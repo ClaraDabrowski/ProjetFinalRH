@@ -5,25 +5,25 @@
 	</div>
 	<nav>
 		<ul>
-			<div>
+			<div id="addMenu">
 				<div class="menu" onclick="toggleOptions()">Ajouter ▾</div>
 				<div class="options" id="options">
 					<div class="option" onclick="goTo('/addEmployee')">Employés +</div>
-					<div class="option" onclick="goTo('materiels')">Ordinateurs +</div>
+					<div class="option" onclick="goTo('/addComputer')">Ordinateurs +</div>
 				</div>
 			</div>
 			<div class="menulinks">
 				<li>
-                    <a href="/home"><img src="assets/images/home.png" alt="home">Accueil</a>
-					<a href="/cardEmployee"><img src="assets/images/profil.png" alt="">Employés</a>
-					<a href="/ordi"><img src="assets/images/ordi.png" alt="">Matériels</a>
+                    <a href="/home"><img src="/assets/images/home.png" alt="home">Accueil</a>
+					<a href="/employees"><img src="/assets/images/profil.png" alt="employee">Employés</a>
+					<a href="/ordi"><img src="/assets/images/ordi.png" alt="">Matériels</a>
 				</li>
 			</div>
 			<div class="logout">
 				<li>
-					<a href="/profil"><img src="assets/images/paremetre.png" alt="">Paramètres</a>
+					<a href="/profil"><img src="/assets/images/paremetre.png" alt="">Paramètres</a>
 					<div class="logoutimg">
-						<a href="/logout"><img src="assets/images/pouvoir.png" alt="off">Déconnexion</a>
+						<a href="/logout"><img src="/assets/images/pouvoir.png" alt="off">Déconnexion</a>
 					</div>
 				</li>
 			</div>

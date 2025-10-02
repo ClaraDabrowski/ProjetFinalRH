@@ -77,11 +77,16 @@
            
         }
 
+        #addMenu{
+            position: relative;
+        }
+
         .options {
             display: none;
             border-top: none;
             width: 200px;
             border-radius: 10px;
+            position: absolute;
         }
 
         .options.show {

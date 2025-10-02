@@ -96,9 +96,20 @@ exports.updateEmployee = async (req, res) => {
         })
         res.redirect('/home')
     } catch (error) {
-         res.render("pages/home/twig", {
+         res.render("pages/home.twig", {
             error: " L'employé n'a pas pu être modifié"
         });
 
     }
+}
+
+exports.getEmployees = async (req, res) => {
+    if (!req.session.company) {
+        return res.redirect('/login');
+    }
+    const company = await prisma.company.findUnique({
+        where: { id: req.session.company.id },
+        include: { employees: true }
+    });
+    res.render("pages/employees.twig", { company });
 }
