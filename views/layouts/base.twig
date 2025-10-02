@@ -3,20 +3,17 @@
 	<head>
 		<meta charset="UTF-8">
 		<meta name="viewport" content="width=device-width, initial-scale=1.0">
-		<link rel="stylesheet" href="./assets/css/style.css"> {% block style %}{% endblock %}{% block title %}{% endblock %}
+         <link rel="stylesheet" href="/assets/css/home.css">
+         <link rel="stylesheet" href="/assets/css/aside.css">
+        {% block style %}{% endblock %}{% block title %}{% endblock %}
 		</head>
 		<body>
-			<div class="auth-container">
-				<div class="container">
-					{% include "/partials/header.twig" %}
+			{% include "/partials/aside.twig" %}
 
-					<main>
-						{% block main %}{% endblock %}
-					</main>
+			<main>
+				{% block main %}{% endblock %}
+			</main>
 
-					{% include "/partials/footer.twig" %}
-					{% block script %}{% endblock %}
-				</div>
-			</div>
+			{% block script %}{% endblock %}
 		</body>
 	</html>

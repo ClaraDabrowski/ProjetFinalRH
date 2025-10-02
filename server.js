@@ -1,6 +1,8 @@
 const express = require('express');
 const userRouter = require('./routers/userRouter')
+const employeeRouter = require('./routers/employeeRouter')  
 const session = require ('express-session')
+
 
 
 
@@ -15,7 +17,9 @@ app.use(session({
 }))
 
 
+
 app.use(userRouter)
+app.use(employeeRouter)
 
 
 app.listen(3001, (err)=>{

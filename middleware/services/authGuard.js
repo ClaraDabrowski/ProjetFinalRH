@@ -3,7 +3,7 @@ const prisma = new PrismaClient()
 
 const authguard = async (req, res, next) => {
     try {
-        if (req.session.user) {
+        if (req.session.company) {
             const company = await prisma.company.findUnique({
                 where: {
                     id: req.session.company.id

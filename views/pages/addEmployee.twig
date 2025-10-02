@@ -1,0 +1,74 @@
+{% extends "/layouts/base.twig" %}
+
+{% block style %}
+	<link rel="stylesheet" href="/assets/css/addEmployee.css">
+{% endblock %}
+
+{% block main %}
+	<div class="formAddEmp">
+		<h2>
+			{% if employee %}
+				Modification de l'employé :
+			{% else %}
+				Ajout de nouvel employé :
+			{% endif %}
+		</h2>
+		<form action={{employee ? "/updateEmployee/" ~ employee.id : "/addEmployee"}} method="post">
+			<div>
+				<label for="firstName"></label>
+				<input type="text" id="firstName" placeholder="Prenom.." name="firstName" value={{employee.firstName}}>
+				{% if errors.firstName %}
+					<p>{{errors.firstName}}</p>
+				{% endif %}
+			</div>
+			<div>
+				<label for="lastName"></label>
+				<input type="text" id="lastName" placeholder="Nom.." name="lastName" value={{employee.lastName}}>
+				{% if errors.lastName %}
+					<p>{{errors.lastName}}</p>
+				{% endif %}
+			</div>
+			<div>
+				<label for="age"></label>
+				<input type="text" id="age" placeholder="Age.." name="age" value={{employee.age}}>
+				{% if errors.age %}
+					<p>{{errors.age}}</p>
+				{% endif %}
+			</div>
+			<div>
+				<label for="gender"></label>
+				<input type="text" id="gender" placeholder="Genre.." name="gender" value={{employee.gender}}>
+				{% if errors.gender %}
+					<p>{{errors.gender}}</p>
+				{% endif %}
+			</div>
+			<div>
+				<label for="mail"></label>
+				<input type="email" id="mail" placeholder="Email.." name="mail" value={{employee.mail}}>
+				{% if errors.mail %}
+					<p>{{errors.mail}}</p>
+				{% endif %}
+				{% if duplicateEmail %}
+					<p>{{duplicateEmail}}</p>
+				{% endif %}
+			</div>
+			{% if not employee %}
+			<div>
+				<label for="password"></label>
+				<input type="password" placeholder="Mot de passe.." id="password" name="password">
+				{% if errors.password %}
+					<p>{{errors.password}}</p>
+				{% endif %}
+			</div>
+			<div>
+				<label for="confirm"></label>
+				<input type="password" id="confirm" placeholder="Confirmez le mot de passe" name="confirm">
+				{% if confirmError %}
+					<p>{{confirmError}}</p>
+				{% endif %}
+			</div>
+			{% endif %}
+			<button>Envoyer</button>
+		</form>
+	</div>
+{% endblock %}

@@ -1,0 +1,33 @@
+{% extends "layouts/base.twig" %}
+
+{% block main %}
+	<section>
+		<div class="infoPres">
+			<h2>Bienvenue
+				{{company.raisonSocial}}</h2>
+			<h3>{{company.lastName}}</h3>
+            
+		</div>
+		<div class="empCount">
+			<h3>Nombre d'employés : </h3>
+			<p>{{employeeCount}}</p>
+		</div>
+		<h3 class="h3Emp">Employés</h3>
+		<div class="employeesSection">
+			{% for employee in company.employees %}
+				<article class="employeeCard">
+					<p class="nameBox">{{employee.lastName ~ " " ~  employee.firstName}}</p>
+					<p>{{employee.mail}}</p>
+					<div class="buttonsCard">
+						<a href="/updateemployee/{{employee.id}}">Modifier</a>
+						<a href="/removeemployee/{{employee.id}}">Supprimer</a>
+					</div>
+				</article>
+			{% endfor %}
+		</div>
+	</section>
+{% endblock %}
+
+{% block script %}
+	<script src="/assets/js/home.js"></script>
+{% endblock %}

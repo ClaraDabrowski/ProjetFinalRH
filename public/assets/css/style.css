@@ -89,3 +89,17 @@ footer a {
     border-top: solid white 1px;
 
 }
+
+#rememberMe {
+    width: 20px;
+    height: 20px;
+    margin-right: 10px;
+   
+}
+
+.remerberMeDiv {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    
+}

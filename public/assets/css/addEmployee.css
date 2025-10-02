@@ -1,0 +1,49 @@
+h2 {
+    text-align: center;
+    margin-bottom: 20px;
+}
+form {
+    display: flex;
+    width: 450px;
+    flex-direction: column;
+    gap: 15px;
+    margin-bottom: 20px;
+    justify-content: space-around;
+}
+
+form div {
+  display: flex;
+  flex-direction: row;
+    justify-content: space-between;
+}
+
+form input {
+    padding: 15px;
+    border: 1px solid #ccc;
+    border-radius: 3px;
+    font-size: 16px;
+    width: 500px;
+    border-radius: 10px;
+}
+
+button{
+    background-color: #4CAF50;
+    color: white;
+    padding: 15px 20px;
+    border: none;
+    border-radius: 10px;
+    cursor: pointer;
+    font-size: 16px;
+}
+
+.formAddEmp{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    padding: 20px 50px 50px 50px;
+    background-color: #181818;
+    border-radius: 20px;
+    margin-top: 120px;
+    margin-left: 500px;
+}

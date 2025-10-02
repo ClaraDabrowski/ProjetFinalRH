@@ -58,8 +58,6 @@ exports.login = async (req, res) => {
         const error = {}
         const company = await prisma.company.findUnique({
             where: {
-
-
                 siret: req.body.siret
             }
         })
@@ -74,13 +72,37 @@ exports.login = async (req, res) => {
         } else {
             throw { siret: "Ce SIRET n'existe pas" }
         }
-
-
-
     } catch (error) {
         res.render("pages/login.twig", {
             error: error
         })
-
     }
+}
+
+
+
+exports.displayHome = async (req, res) => {
+    if (!req.session.company) {
+        return res.redirect('/login');
+    }
+    const company = await prisma.company.findUnique({
+        where: {
+            id: req.session.company.id
+        },
+        include: {
+            employees: true
+        }
+    });
+        const employeeCount = company.employees.length;
+        res.render("pages/home.twig", {
+            company: company,
+            employeeCount: employeeCount
+        });
+}
+
+
+exports.logout = async (req, res) => {
+    req.session.destroy(() => {
+        res.redirect('/login')
+    })
 }
