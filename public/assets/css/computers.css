@@ -71,3 +71,100 @@
 .buttonsCard a:last-child:hover{
     background-color: #da190b;
 }
+
+
+
+@media screen and (max-width: 1024px) {
+    main {
+        margin-left: 250px;
+        width: calc(100% - 250px);
+    }
+
+    .emp {
+        font-size: 28px;
+        margin-left: 20px;
+    }
+
+    .cardEmp {
+        margin-left: 20px;
+        justify-content: center;
+    }
+
+    .employeesCards {
+        width: calc(50% - 30px);
+        min-width: 280px;
+    }
+}
+
+
+@media screen and (max-width: 768px) {
+    main {
+        margin-left: 0;
+        width: 100%;
+        padding: 80px 15px 15px 15px;
+    }
+
+    .emp {
+        font-size: 24px;
+        margin-left: 0;
+        text-align: center;
+    }
+
+    .cardEmp {
+        margin-left: 0;
+        justify-content: center;
+        gap: 15px;
+    }
+
+    .employeesCards {
+        width: 100%;
+        max-width: 400px;
+        padding: 15px;
+    }
+
+    .employeesCards p {
+        font-size: 14px;
+    }
+
+    .nameCard {
+        font-size: 18px;
+    }
+
+    .buttonsCard a {
+        font-size: 13px;
+        padding: 6px 12px;
+    }
+}
+
+
+@media screen and (max-width: 480px) {
+    main {
+        padding: 70px 10px 10px 10px;
+    }
+
+    .emp {
+        font-size: 20px;
+    }
+
+    .employeesCards {
+        padding: 12px;
+    }
+
+    .employeesCards p {
+        font-size: 13px;
+        margin: 8px 0;
+    }
+
+    .nameCard {
+        font-size: 16px;
+    }
+
+    .buttonsCard {
+        flex-direction: column;
+    }
+
+    .buttonsCard a {
+        width: 100%;
+        text-align: center;
+    }
+}
