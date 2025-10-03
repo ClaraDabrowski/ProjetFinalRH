@@ -1,47 +1,53 @@
-document.addEventListener('DOMContentLoaded', function(){
+document.addEventListener('DOMContentLoaded', function () {
 
     const loginForm = document.querySelector('form');
-    const siretImput = document.getElementById('siret');
-    const remerberMeCheckbox = document.getElementById('rememberMe');
+    const siretInput = document.getElementById('siret');
+    const rememberMeCheckbox = document.getElementById('rememberMe');
 
     const STORAGE_KEY = 'rememberMeSiret';
 
     function loadRememberSiret() {
-        const savedSiret = localStorage.getItem('STORAGE_KEY');
-
+        const savedSiret = localStorage.getItem(STORAGE_KEY);
+console.log('Chargement SIRET depuis localStorage:', savedSiret);
         if (savedSiret) {
-            siretImput.value = savedSiret;
+            siretInput.value = savedSiret;
 
-            remerberMeCheckbox.checked = true;
+            rememberMeCheckbox.checked = true;
         }
 
     }
-})
 
 
-function handleForSubmit(event){
 
-    if(remerberMeCheckbox.checked){
+    function handleForSubmit(event) {
+  console.log('Formulaire soumis');
+        console.log('Checkbox cochée:', rememberMeCheckbox.checked);
+        if (rememberMeCheckbox.checked) {
 
-        const siretValue = siretImput.value.trim()
-
-        if (siretValue) {
-            localStorage.setItem(STORAGE_KEY, siretValue);
+            const siretValue = siretInput.value.trim()
+  console.log('Valeur SIRET à enregistrer:', siretValue);
+            if (siretValue) {
+                localStorage.setItem(STORAGE_KEY, siretValue);
+                console.log('SIRET enregistré dans localStorage');
+            }
+        } else {
+            localStorage.removeItem(STORAGE_KEY);
+               console.log('SIRET supprimé du localStorage');
         }
-    }else{
-        localStorage.removeItem(STORAGE_KEY);
+
     }
 
-}
 
+    loadRememberSiret();
 
-loadRememberSiret();
+    loginForm.addEventListener('submit', handleForSubmit);
 
-loginForm.addEventListener('submit', handleForSubmit);
+    rememberMeCheckbox.addEventListener('change', function () {
+  console.log('Checkbox changée, cochée:', this.checked);
+        if (!this.checked) {
+            localStorage.removeItem(STORAGE_KEY);
+              console.log('SIRET supprimé du localStorage (change event)');
+        }
+    })
 
-remerberMeCheckbox.addEventListener('change', function(){
-
-    if (!this.checked) {
-        localStorage.removeItem(STORAGE_KEY);
-    }
 })

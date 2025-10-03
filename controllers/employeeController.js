@@ -2,7 +2,7 @@ const bcrypt = require('bcrypt')
 const { PrismaClient } = require("../generated/prisma/client")
 const hashExtension = require("../middleware/extensions/employeeHashPassword")
 const validateEmployee = require('../middleware/extensions/validateEmployee')
-const emailService = require('../middleware/services/emailService') 
+const emailService = require('../middleware/services/emailService')
 const prisma = new PrismaClient().$extends(hashExtension).$extends(validateEmployee)
 
 
@@ -32,11 +32,11 @@ exports.addEmployee = async (req, res) => {
             }
         })
 
-         const company = await prisma.company.findUnique({
+        const company = await prisma.company.findUnique({
             where: { id: req.session.company.id }
         });
 
-          try {
+        try {
             await emailService.sendWelcomeEmail({
                 firstName: employee.firstName,
                 lastName: employee.lastName,
@@ -45,13 +45,13 @@ exports.addEmployee = async (req, res) => {
             }, company.raisonSocial);
         } catch (emailError) {
             console.error('Erreur email (compte créé mais email non envoyé):', emailError);
-            
+
         }
 
         res.redirect('/home')
     } catch (error) {
         console.log(error);
-        
+
         if (error.code === 'P2002') {
             res.render('pages/addEmployee.twig', {
                 duplicateEmail: 'Cet email est déjà utilisé',
@@ -116,12 +116,13 @@ exports.updateEmployee = async (req, res) => {
         })
         res.redirect('/home')
     } catch (error) {
-         res.render("pages/home.twig", {
+        res.render("pages/home.twig", {
             error: " L'employé n'a pas pu être modifié"
         });
 
     }
 }
+
 
 exports.getEmployees = async (req, res) => {
     if (!req.session.company) {
@@ -129,7 +130,27 @@ exports.getEmployees = async (req, res) => {
     }
     const company = await prisma.company.findUnique({
         where: { id: req.session.company.id },
-        include: { employees: true }
+        include: { 
+            employees: {
+                include: {
+                    computer: true 
+                }
+            }
+        }
     });
     res.render("pages/employees.twig", { company });
+}
+
+
+
+exports.linkComputer = async (req, res) => {
+    const employeeId = parseInt(req.params.id);
+    const computerId = req.body.computerId ? parseInt(req.body.computerId) : null;
+    if (computerId) {
+        await prisma.computer.update({
+            where: { id: computerId },
+            data: { employeeId: employeeId }
+        });
+    }
+    res.redirect('/home');
 }

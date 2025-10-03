@@ -1,0 +1,22 @@
+{% extends "/layouts/base.twig" %}
+
+{% block style %}
+    <link rel="stylesheet" href="/assets/css/computers.css">
+{% endblock %}
+
+{% block main %}
+    <h2 class="emp">Ordinateurs</h2>
+    <div class="cardEmp">
+       {% for computer in company.computers %}
+    <article class="employeesCards">
+        <p class="nameCard">MAC : {{computer.mac}}</p>
+        {% if computer.employee %}
+            <p>Attribué à : {{computer.employee.lastName}} {{computer.employee.firstName}}</p>
+        {% else %}
+            <p>Non attribué</p>
+        {% endif %}
+        <p>{{company.raisonSocial}}</p>
+    </article>
+{% endfor %}
+    </div>
+{% endblock %}

@@ -21,19 +21,30 @@
 				</h3>
 				<p>{{computerCount}}</p>
 			</div>
-		</p>
-	</div>
-</div>
-<h3 class="h3Emp">Employés</h3>
-<div class="employeesSection">
-	{% for employee in company.employees %}
-		<article class="employeeCard">
-			<p class="nameCard">{{employee.lastName ~ " " ~  employee.firstName}}</p>
-			<p>{{employee.mail}}</p>
-			<div class="buttonsCard">
-				<a href="/updateemployee/{{employee.id}}">Modifier</a>
-				<a href="/removeemployee/{{employee.id}}">Supprimer</a>
+			<div class="empCount mapCount">
+				<div id="map"></div>
 			</div>
-		</article>
-	{% endfor %}
-</div></section>{% endblock %}{% block script %}<script src="/assets/js/home.js"></script>{% endblock %}
+		</div>
+
+	</div>
+</p></div></div><h3 class="h3Emp">Employés</h3><div class="employeesSection">{% for employee in company.employees %}
+<article class="employeeCard">
+	<p class="nameCard">{{employee.lastName ~ " " ~  employee.firstName}}</p>
+	<p>{{employee.mail}}</p>
+	<p class="computerInfo">
+		<strong>Ordinateur :</strong>
+		{% if employee.computer %}
+			{{ employee.computer.mac }}
+		{% else %}
+			<span class="no-computer">Aucun ordinateur</span>
+		{% endif %}
+	</p>
+
+	<div class="buttonsCard">
+		<a href="/updateemployee/{{employee.id}}">Modifier</a>
+		<a href="/removeemployee/{{employee.id}}">Supprimer</a>
+	</div>
+</article>{% endfor %}</div></section>{% endblock %}{% block script %}<script src="/assets/js/home.js"></script><script>var map = L.map('map').setView([
+48.8584, 2.2945
+], 13);
+L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {attribution: '© OpenStreetMap contributors'}).addTo(map);</script>{% endblock %}

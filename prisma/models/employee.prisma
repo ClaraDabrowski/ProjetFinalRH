@@ -8,6 +8,5 @@ model Employee {
     gender String @db.VarChar(255)
     company Company @relation(fields: [companyId], references: [id])
     companyId Int
-    computerId Int?
-    computer Computer?
+    computers Computer []
 }

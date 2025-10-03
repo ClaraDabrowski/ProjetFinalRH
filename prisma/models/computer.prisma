@@ -5,5 +5,5 @@ model Computer {
     company Company @relation(fields: [companyId], references: [id])
     companyId Int
     employee Employee? @relation(fields : [employeeId], references: [id])
-    employeeId Int? @unique
+    employeeId Int? 
 }

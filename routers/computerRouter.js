@@ -4,6 +4,7 @@ const authGuard = require ("../middleware/services/authGuard")
 
 computerRouter.get('/addComputer',authGuard, computerController.displayAddComputer)
 computerRouter.post('/addComputer',authGuard, computerController.addComputer)
+computerRouter.get('/computers', authGuard, computerController.displayComputers)
 
 
 module.exports = computerRouter

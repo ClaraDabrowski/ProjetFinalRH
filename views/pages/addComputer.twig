@@ -7,11 +7,29 @@
 {% block main %}
 	<div class="formAddComp">
 		<h2>Ajout d'ordinateur :</h2>
+		
+		{% if error %}
+			<p class="error">{{ error }}</p>
+		{% endif %}
+		
 		<form action="/addComputer" method="post">
 			<div>
-				<label for="mac"></label>
-				<input type="text" id="mac" placeholder="Adresse MAC.." name="mac" value={{computer.mac}}>
+				<label for="mac">Adresse MAC :</label>
+				<input type="text" id="mac" placeholder="Adresse MAC.." name="mac" value="{{ computer.mac }}">
 			</div>
+			
+			<div>
+				<label for="employeeId">Attribuer à un employé :</label>
+				<select id="employeeId" name="employeeId">
+					<option value=""> Aucun employé </option>
+					{% for employee in employees %}
+						<option value="{{ employee.id }}" {% if computer.employeeId == employee.id %}selected{% endif %}>
+							{{ employee.firstName }} {{ employee.lastName }}
+						</option>
+					{% endfor %}
+				</select>
+			</div>
+			
 			<button>Envoyer</button>
 		</form>
 	</div>

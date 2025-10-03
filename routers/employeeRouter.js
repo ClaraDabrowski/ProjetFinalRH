@@ -9,5 +9,5 @@ employeeRouter.get('/removeEmployee/:id', authGuard, employeeController.removeEm
 employeeRouter.get('/updateEmployee/:id', authGuard, employeeController.displayUpdateEmployee)
 employeeRouter.post('/updateEmployee/:id', authGuard, employeeController.updateEmployee)
 employeeRouter.get('/employees', authGuard, employeeController.getEmployees)
-
+employeeRouter.post('/linkComputer/:id', authGuard, employeeController.linkComputer);
 module.exports = employeeRouter
