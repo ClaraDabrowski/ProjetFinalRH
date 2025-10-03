@@ -9,29 +9,65 @@
     border-radius: 20px;
     display: flex;
     flex-direction: column;
-    height: 230px;
+    justify-content: space-between;
+    height: 280px;
     width: 300px;
     padding: 20px;
     margin: 20px;
-   
+}
+
+.employeesCards p{
+    margin: 5px 0;
 }
 
 .cardEmp{
     display: flex;
-    flex-direction:row ;
+    flex-direction: row;
+    flex-wrap: wrap;
     margin-left: 20px;
 }
 
 .emp{
     margin-left: 40px;
-   height: 20px;
-}
-
-div{
-    display: flex;
-    flex-direction: row;
+    height: 20px;
 }
 
 .nameCard{
     margin-top: 10px;
+    font-size: 18px;
+}
+
+.no-employee{
+    color: #999;
+    font-style: italic;
+}
+
+.buttonsCard{
+    display: flex;
+    justify-content: center;
+    flex-direction: row;
+    gap: 10px;
+    margin-top: 15px;
+}
+
+.buttonsCard a{
+    text-decoration: none;
+    color: white;
+    background-color: #4CAF50;
+    padding: 8px 15px;
+    border-radius: 5px;
+    font-size: 14px;
+    transition: background-color 0.3s;
+}
+
+.buttonsCard a:hover{
+    background-color: #45a049;
+}
+
+.buttonsCard a:last-child{
+    background-color: #f44336;
+}
+
+.buttonsCard a:last-child:hover{
+    background-color: #da190b;
 }

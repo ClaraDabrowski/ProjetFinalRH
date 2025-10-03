@@ -7,16 +7,23 @@
 {% block main %}
     <h2 class="emp">Ordinateurs</h2>
     <div class="cardEmp">
-       {% for computer in company.computers %}
-    <article class="employeesCards">
-        <p class="nameCard">MAC : {{computer.mac}}</p>
-        {% if computer.employee %}
-            <p>Attribué à : {{computer.employee.lastName}} {{computer.employee.firstName}}</p>
-        {% else %}
-            <p>Non attribué</p>
-        {% endif %}
-        <p>{{company.raisonSocial}}</p>
-    </article>
-{% endfor %}
+        {% for computer in company.computers %}
+            <article class="employeesCards">
+                <p class="nameCard"><strong>MAC :</strong> {{ computer.mac }}</p>
+                
+                {% if computer.employee %}
+                    <p><strong>Attribué à :</strong><br>{{ computer.employee.firstName }} {{ computer.employee.lastName }}</p>
+                {% else %}
+                    <p class="no-employee"><strong>Statut :</strong> Non attribué</p>
+                {% endif %}
+                
+                <p><strong>Entreprise :</strong> {{ company.raisonSocial }}</p>
+                
+                <div class="buttonsCard">
+                    <a href="/updateComputer/{{ computer.id }}">Modifier</a>
+                    <a href="/removeComputer/{{ computer.id }}">Supprimer</a>
+                </div>
+            </article>
+        {% endfor %}
     </div>
 {% endblock %}

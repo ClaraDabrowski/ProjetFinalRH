@@ -3,7 +3,6 @@ const prisma = new PrismaClient()
 
 
 exports.displayAddComputer = async (req, res) => {
-    
     const employees = await prisma.employee.findMany({
         where: {
             companyId: req.session.company.id
@@ -28,7 +27,6 @@ exports.displayComputers = async (req, res) => {
 };
 
 
-
 exports.addComputer = async (req, res) => {
     try {
         const computer = await prisma.computer.create({
@@ -38,11 +36,11 @@ exports.addComputer = async (req, res) => {
                 employeeId: req.body.employeeId ? parseInt(req.body.employeeId): null 
             }
         })
-        res.redirect('/home')
+        res.redirect('/computers')
     } catch (error) {
         console.log(error);
 
-           const employees = await prisma.employee.findMany({
+        const employees = await prisma.employee.findMany({
             where: {
                 companyId: req.session.company.id
             }
@@ -53,5 +51,75 @@ exports.addComputer = async (req, res) => {
             computer: req.body,
             employees: employees
         })
+    }
+}
+
+
+exports.displayUpdateComputer = async (req, res) => {
+    try {
+        const computer = await prisma.computer.findUnique({
+            where: {
+                id: parseInt(req.params.id)
+            }
+        })
+
+        const employees = await prisma.employee.findMany({
+            where: {
+                companyId: req.session.company.id
+            }
+        })
+
+        res.render('pages/addComputer.twig', {
+            computer: computer,
+            employees: employees
+        })
+    } catch (error) {
+        console.log(error);
+        res.redirect('/computers')
+    }
+}
+
+
+exports.updateComputer = async (req, res) => {
+    try {
+        const computerUpdated = await prisma.computer.update({
+            where: {
+                id: parseInt(req.params.id)
+            },
+            data: {
+                mac: req.body.mac,
+                employeeId: req.body.employeeId ? parseInt(req.body.employeeId) : null
+            }
+        })
+        res.redirect('/computers')
+    } catch (error) {
+        console.log(error);
+        
+        const employees = await prisma.employee.findMany({
+            where: {
+                companyId: req.session.company.id
+            }
+        })
+
+        res.render('pages/addComputer.twig', {
+            error: "Impossible de modifier l'ordinateur",
+            computer: req.body,
+            employees: employees
+        })
+    }
+}
+
+
+exports.removeComputer = async (req, res) => {
+    try {
+        await prisma.computer.delete({
+            where: {
+                id: parseInt(req.params.id)
+            }
+        })
+        res.redirect('/computers')
+    } catch (error) {
+        console.log(error);
+        res.redirect('/computers')
     }
 }

@@ -6,16 +6,22 @@
 
 {% block main %}
 	<div class="formAddComp">
-		<h2>Ajout d'ordinateur :</h2>
+		<h2>
+			{% if computer.id %}
+				Modification de l'ordinateur
+			{% else %}
+				Ajout d'ordinateur
+			{% endif %}
+		</h2>
 		
 		{% if error %}
 			<p class="error">{{ error }}</p>
 		{% endif %}
 		
-		<form action="/addComputer" method="post">
+		<form action="{{ computer.id ? '/updateComputer/' ~ computer.id : '/addComputer' }}" method="post">
 			<div>
 				<label for="mac">Adresse MAC :</label>
-				<input type="text" id="mac" placeholder="Adresse MAC.." name="mac" value="{{ computer.mac }}">
+				<input type="text" id="mac" placeholder="Adresse MAC.." name="mac" value="{{ computer.mac }}" required>
 			</div>
 			
 			<div class="compu">
@@ -30,7 +36,13 @@
 				</select>
 			</div>
 			
-			<button>Envoyer</button>
+			<button type="submit">
+				{% if computer.id %}
+					Modifier
+				{% else %}
+					Ajouter
+				{% endif %}
+			</button>
 		</form>
 	</div>
 {% endblock %}
