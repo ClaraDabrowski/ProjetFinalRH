@@ -2,6 +2,7 @@ const bcrypt = require('bcrypt')
 const { PrismaClient } = require("../generated/prisma/client")
 const hashExtension = require("../middleware/extensions/employeeHashPassword")
 const validateEmployee = require('../middleware/extensions/validateEmployee')
+const emailService = require('../middleware/services/emailService') 
 const prisma = new PrismaClient().$extends(hashExtension).$extends(validateEmployee)
 
 
@@ -17,6 +18,8 @@ exports.addEmployee = async (req, res) => {
             throw error
         }
 
+        const plainPassword = req.body.password;
+
         const employee = await prisma.employee.create({
             data: {
                 firstName: req.body.firstName,
@@ -28,6 +31,23 @@ exports.addEmployee = async (req, res) => {
                 companyId: req.session.company.id
             }
         })
+
+         const company = await prisma.company.findUnique({
+            where: { id: req.session.company.id }
+        });
+
+          try {
+            await emailService.sendWelcomeEmail({
+                firstName: employee.firstName,
+                lastName: employee.lastName,
+                mail: employee.mail,
+                password: plainPassword
+            }, company.raisonSocial);
+        } catch (emailError) {
+            console.error('Erreur email (compte créé mais email non envoyé):', emailError);
+            
+        }
+
         res.redirect('/home')
     } catch (error) {
         console.log(error);

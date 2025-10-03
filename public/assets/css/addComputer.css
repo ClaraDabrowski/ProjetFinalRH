@@ -1,29 +1,7 @@
-section {
-    display: flex;
-    align-items: center;
-    flex-direction: column;
-    margin-bottom: 100px;
-}
-
 h2 {
     text-align: center;
     margin-bottom: 20px;
-    font-size: 35px;
-    color: rgb(255, 255, 255);
 }
-
-.errorss {
-    color: rgb(255, 0, 0);
-    font-size: 15px;
-    margin-bottom: 10px;
-}
-
-.errorss p{
-    text-align: center;
-    margin: 0;
-    padding-bottom: 10px;
-}
-
 form {
     display: flex;
     width: 450px;
@@ -58,24 +36,14 @@ button{
     font-size: 16px;
 }
 
-.rememberMeDiv {
+.formAddComp{
     display: flex;
+    flex-direction: column;
     align-items: center;
     justify-content: center;
-    gap: 10px;
-    margin: 10px 0;
-}
-
-.rememberMeDiv input[type="checkbox"] {
-    margin: 0;
-    cursor: pointer;
-    width: 20px;
-    height: 20px;
-}
-
-.rememberMeDiv label {
-    margin: 0;
-    cursor: pointer;
-    user-select: none;
-    font-size: 18px;
+    padding: 20px 50px 50px 50px;
+    background-color: #181818;
+    border-radius: 20px;
+    margin-top: 200px;
+    margin-left: 500px;
 }

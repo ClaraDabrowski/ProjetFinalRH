@@ -90,14 +90,18 @@ exports.displayHome = async (req, res) => {
             id: req.session.company.id
         },
         include: {
-            employees: true
+            employees: true,
+            computers: true,
         }
     });
         const employeeCount = company.employees.length;
+         const computerCount = company.computers.length; 
         res.render("pages/home.twig", {
             company: company,
-            employeeCount: employeeCount
+            employeeCount: employeeCount,
+            computerCount: computerCount 
         });
+        
 }
 
 

@@ -3,17 +3,20 @@ body {
     background-image: url('/assets/images/bgimg.jpg');
     background-repeat: no-repeat;
     background-size: cover;
-
+    max-height: 100vh;
     color: white;
     font-family: Arial, Helvetica, sans-serif;
+    padding: 2em;
+    overflow: hidden;
 }
 
 .container {
     border: solid white 1px;
     border-radius: 20px;
-    margin: 20px 2.5px 20px 20px;
+    box-sizing: border-box;
+   
     width: 700px;
-    height: 880px;
+    height: 100%;
     display: flex;
     flex-direction: column;
     justify-content: space-between;
@@ -26,8 +29,8 @@ body {
 }
 
 h1 img {
-    width: 360px;
-    height: 200px;
+    width: 100%;
+    height: 100%;
     border-radius: 20px;
    
 }

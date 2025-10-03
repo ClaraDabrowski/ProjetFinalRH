@@ -83,6 +83,11 @@ body{
     margin-top: 50px;
 }   
 
+.count {
+    display: flex;
+    flex-direction: row;
+}
+
 .empCount{
     margin-top: 60px;
     width: 350px;
@@ -101,6 +106,32 @@ body{
 }
 
 .empCount p{
+    margin: 0;
+    font-size: 80px;
+    padding-top: 10px;
+    color: grey;
+    text-align: center;
+}
+
+
+.comCount{
+    margin-top: 60px;
+    width: 350px;
+    height: 130px;
+    background-color: #181818;
+    margin-left: 40px;
+    border-radius: 20px;
+    padding: 10px;
+
+}
+
+.comCount h3{
+    margin: 0;
+    font-size: 25px; 
+    text-align: center;
+}
+
+.comCount p{
     margin: 0;
     font-size: 80px;
     padding-top: 10px;

@@ -6,30 +6,34 @@
 			<h2>Bienvenue
 				{{company.raisonSocial}}</h2>
 			<div class="searchInput">
-                <input type="zoneSaisie" type="text" placeholder="Rechercher un employé.." id="searchBar">
-            </div>
-            
-		</div>
-		<div class="empCount">
-			<h3>Nombre d'employés : </h3>
-			<p>{{employeeCount}}</p>
-		</div>
-		<h3 class="h3Emp">Employés</h3>
-		<div class="employeesSection">
-			{% for employee in company.employees %}
-				<article class="employeeCard">
-					<p class="nameCard">{{employee.lastName ~ " " ~  employee.firstName}}</p>
-					<p>{{employee.mail}}</p>
-					<div class="buttonsCard">
-						<a href="/updateemployee/{{employee.id}}">Modifier</a>
-						<a href="/removeemployee/{{employee.id}}">Supprimer</a>
-					</div>
-				</article>
-			{% endfor %}
-		</div>
-	</section>
-{% endblock %}
+				<input type="zoneSaisie" type="text" placeholder="Rechercher un employé.." id="searchBar">
+			</div>
 
-{% block script %}
-	<script src="/assets/js/home.js"></script>
-{% endblock %}
+		</div>
+		<div class="count">
+			<div class="empCount">
+				<h3>Nombre d'employés :
+				</h3>
+				<p>{{employeeCount}}</p>
+			</div>
+			<div class="empCount">
+				<h3>Nombre d'ordinateurs :
+				</h3>
+				<p>{{computerCount}}</p>
+			</div>
+		</p>
+	</div>
+</div>
+<h3 class="h3Emp">Employés</h3>
+<div class="employeesSection">
+	{% for employee in company.employees %}
+		<article class="employeeCard">
+			<p class="nameCard">{{employee.lastName ~ " " ~  employee.firstName}}</p>
+			<p>{{employee.mail}}</p>
+			<div class="buttonsCard">
+				<a href="/updateemployee/{{employee.id}}">Modifier</a>
+				<a href="/removeemployee/{{employee.id}}">Supprimer</a>
+			</div>
+		</article>
+	{% endfor %}
+</div></section>{% endblock %}{% block script %}<script src="/assets/js/home.js"></script>{% endblock %}
