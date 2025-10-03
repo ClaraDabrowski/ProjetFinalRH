@@ -1,9 +1,0 @@
-model Company {
-    id Int @id @default(autoincrement())
-    raisonSocial String @db.VarChar(255)
-    siret String @unique  @db.VarChar(255) 
-    lastName String @db.VarChar(255)
-    password String @db.VarChar(255)
-    employees Employee[]
-    computers Computer[]
-}

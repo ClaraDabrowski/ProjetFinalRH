@@ -47,3 +47,23 @@ button{
     margin-top: 200px;
     margin-left: 500px;
 }
+
+
+#employeeId{
+     padding: 15px;
+    border: 1px solid #ccc;
+    border-radius: 3px;
+    font-size: 16px;
+    width: 350px;
+    border-radius: 10px;
+    background-color: white;
+    color: gray;
+    margin-left: 100px;
+    margin-top: 10px;
+}
+
+.compu{
+    display: flex;
+    flex-direction: column;
+    
+}

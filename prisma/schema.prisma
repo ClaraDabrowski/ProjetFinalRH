@@ -14,4 +14,34 @@ datasource db {
   url      = env("DATABASE_URL")
 }
 
+model Company {
+  id           Int        @id @default(autoincrement())
+  raisonSocial String     @db.VarChar(255)
+  siret        String     @unique @db.VarChar(255)
+  lastName     String     @db.VarChar(255)
+  password     String     @db.VarChar(255)
+  employees    Employee[]
+  computers    Computer[]
+}
 
+model Employee {
+  id        Int       @id @default(autoincrement())
+  firstName String    @db.VarChar(255)
+  lastName  String    @db.VarChar(255)
+  mail      String    @unique @db.VarChar(255)
+  password  String    @db.VarChar(255)
+  age       Int
+  gender    String    @db.VarChar(255)
+  company   Company   @relation(fields: [companyId], references: [id])
+  companyId Int
+  computer  Computer?
+}
+
+model Computer {
+  id         Int       @id @default(autoincrement())
+  mac        String    @db.VarChar(255)
+  company    Company   @relation(fields: [companyId], references: [id])
+  companyId  Int
+  employee   Employee? @relation(fields: [employeeId], references: [id])
+  employeeId Int?      @unique
+}

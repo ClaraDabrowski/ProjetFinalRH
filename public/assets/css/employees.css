@@ -6,14 +6,17 @@
 
 .employeesCards{
     background-color: #181818;
-    border-radius: 10px;
+    border-radius: 20px;
     display: flex;
     flex-direction: column;
-    height: 410px;
-    width: 300px;
-    padding: 20px;
+    height: 450px;
+    width: 340px;
+    padding: 5px;
     margin: 20px;
-   
+}
+
+.employeesCards p{
+    margin: 20px;
 }
 
 .cardEmp{
