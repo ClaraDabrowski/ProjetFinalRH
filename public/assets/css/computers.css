@@ -4,20 +4,21 @@
     flex-direction: row;
 }
 
-.employeesCards{
+.computersCards{
     background-color: #181818;
     border-radius: 20px;
     display: flex;
     flex-direction: column;
     justify-content: space-between;
-    height: 280px;
+    height: 220px;
     width: 300px;
     padding: 20px;
     margin: 20px;
 }
 
-.employeesCards p{
+.computersCards p{
     margin: 5px 0;
+    padding: 5px;
 }
 
 .cardEmp{
@@ -35,6 +36,7 @@
 .nameCard{
     margin-top: 10px;
     font-size: 18px;
+    font-size: 20px;
 }
 
 .no-employee{

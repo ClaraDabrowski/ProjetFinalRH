@@ -2,7 +2,7 @@ section {
     display: flex;
     align-items: center;
     flex-direction: column;
-    margin-bottom: 100px;
+    margin-bottom: 80px;
 }
 
 h2 {
@@ -15,8 +15,8 @@ form {
     display: flex;
     width: 450px;
     flex-direction: column;
-    gap: 15px;
-    margin-bottom: 20px;
+    gap: 10px;
+    margin-bottom: 10px;
     justify-content: space-around;
 }
 

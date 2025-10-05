@@ -44,13 +44,9 @@ button{
     padding: 20px 50px 50px 50px;
     background-color: #181818;
     border-radius: 20px;
-    margin-top: 120px;
-    margin-left: 500px;
+    margin: 120px auto 30px auto;
+    max-width: 600px;
 }
-
-
-
-
 
 
 @media screen and (max-width: 1024px) {
