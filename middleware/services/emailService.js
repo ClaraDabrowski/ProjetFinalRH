@@ -1,6 +1,8 @@
 const transporter = require('../../config/emailConfig');
 
 exports.sendWelcomeEmail = async (employeeData, companyName) => {
+
+    
     const mailOptions = {
         from: process.env.EMAIL_USER,
         to: employeeData.mail,

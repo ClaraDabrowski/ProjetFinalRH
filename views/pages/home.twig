@@ -44,7 +44,10 @@
 		<a href="/updateemployee/{{employee.id}}">Modifier</a>
 		<a href="/removeemployee/{{employee.id}}">Supprimer</a>
 	</div>
-</article>{% endfor %}</div></section>{% endblock %}{% block script %}<script src="/assets/js/home.js"></script><script>var map = L.map('map').setView([
-48.8584, 2.2945
-], 13);
-L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {attribution: '© OpenStreetMap contributors'}).addTo(map);</script>{% endblock %}
+</article>{% endfor %}</div></section>{% endblock %}{% block script %}<script src="/assets/js/home.js"></script><script>
+
+var map = L.map('map').setView([
+		48.8584, 2.2945], 13);
+		
+     L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {attribution: '© OpenStreetMap contributors'}).addTo(map);
+	 </script>{% endblock %}

@@ -8,8 +8,8 @@ function goTo(page) {
 }
 
 
-document.addEventListener('DOMContentLoaded', function() {
-   
+document.addEventListener('DOMContentLoaded', function () {
+
     const menuToggle = document.createElement('button');
     menuToggle.className = 'menu-toggle';
     menuToggle.innerHTML = '☰';
@@ -19,11 +19,11 @@ document.addEventListener('DOMContentLoaded', function() {
     const aside = document.querySelector('aside');
     const body = document.body;
 
-    menuToggle.addEventListener('click', function() {
+    menuToggle.addEventListener('click', function () {
         aside.classList.toggle('active');
         body.classList.toggle('menu-open');
-        
-       
+
+
         if (aside.classList.contains('active')) {
             menuToggle.innerHTML = '✕';
         } else {
@@ -31,10 +31,10 @@ document.addEventListener('DOMContentLoaded', function() {
         }
     });
 
-    
-    body.addEventListener('click', function(e) {
-        if (body.classList.contains('menu-open') && 
-            !aside.contains(e.target) && 
+
+    body.addEventListener('click', function (e) {
+        if (body.classList.contains('menu-open') &&
+            !aside.contains(e.target) &&
             !menuToggle.contains(e.target)) {
             aside.classList.remove('active');
             body.classList.remove('menu-open');
@@ -42,10 +42,10 @@ document.addEventListener('DOMContentLoaded', function() {
         }
     });
 
-    
+
     const menuLinks = aside.querySelectorAll('a');
     menuLinks.forEach(link => {
-        link.addEventListener('click', function() {
+        link.addEventListener('click', function () {
             if (window.innerWidth <= 768) {
                 aside.classList.remove('active');
                 body.classList.remove('menu-open');
@@ -54,8 +54,8 @@ document.addEventListener('DOMContentLoaded', function() {
         });
     });
 
-   
-    window.addEventListener('resize', function() {
+
+    window.addEventListener('resize', function () {
         if (window.innerWidth > 768) {
             aside.classList.remove('active');
             body.classList.remove('menu-open');
