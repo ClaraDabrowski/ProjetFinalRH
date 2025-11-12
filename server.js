@@ -24,6 +24,6 @@ app.use(userRouter)
 app.use(employeeRouter)
 app.use(computerRouter)
 
-app.listen(3001, (err)=>{
+app.listen(process.env.PORT, (err)=>{
     console.log(!err ? "Connecté au serveur" : err);
 })
